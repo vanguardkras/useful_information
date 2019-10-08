@@ -1,0 +1,17 @@
+document.getElementById('photoupdate').addEventListener('change', function() {
+    let photo = this.files[0];
+    let ajax = new XMLHttpRequest();
+    let formData = new FormData();
+    let csrf = document.getElementsByName('_token')[0].value;
+
+    formData.append('photo', photo);
+    formData.append('_token', csrf);
+
+    ajax.open('POST', '/photo_update', true);
+    ajax.send(formData);
+    ajax.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('photo').src = this.responseText;
+        }
+    };
+});
