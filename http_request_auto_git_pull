@@ -1,0 +1,10 @@
+Auto pull during an http-request.
+
+<?php
+
+chdir('../');
+exec('php artisan down');
+exec('git pull');
+exec('composer install --no-interaction --no-dev --prefer-dist');
+
+echo 'Successful pull';
