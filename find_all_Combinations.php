@@ -1,3 +1,5 @@
+<?php
+
 function allCombinations(array $input_values)
 {
     $combinations = [[]];
@@ -7,4 +9,6 @@ function allCombinations(array $input_values)
             array_push($combinations, array_merge($combination, [$element]));
         }
     }
+
+    return $combinations;
 }
